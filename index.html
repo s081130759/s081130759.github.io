@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="学び、制作、日々の発見を記録する個人ホームページです。">
+  <title>SHO / Activity Log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="トップへ">
+      <span class="brand-mark">S</span>
+      <span>SHO / LOG</span>
+    </a>
+    <nav aria-label="メインナビゲーション">
+      <a href="#about">About</a>
+      <a href="#log">Log</a>
+      <a href="#next">Next</a>
+    </nav>
+    <button class="theme-button" type="button" aria-label="配色を切り替える" title="配色を切り替える">◐</button>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">PERSONAL ACTIVITY ARCHIVE / 2026</p>
+        <h1 id="hero-title">考えたことを、<br><em>つくったもの</em>にする。</h1>
+        <p class="lead">AIとコードを使いながら、学び、制作、試行錯誤の過程を残していく個人の活動記録です。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#log">記録を見る <span>↓</span></a>
+          <a class="text-link" href="#about">このサイトについて →</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="visual-center">
+          <span>LEARN</span>
+          <strong>01</strong>
+          <span>BUILD</span>
+        </div>
+        <p class="visual-note">A small step,<br>a visible record.</p>
+      </div>
+    </section>
+
+    <section class="manifesto" id="about">
+      <p class="section-number">01 / ABOUT</p>
+      <div>
+        <h2>完成品だけでなく、<br>途中の思考も記録する。</h2>
+        <p>新しく知ったこと、実際に試したこと、うまくいかなかったこと。その全部を次の活動につなげるための場所です。まずは小さなホームページから始め、少しずつ育てていきます。</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Focus</dt><dd>AI / Web / Finance</dd></div>
+        <div><dt>Based in</dt><dd>Japan</dd></div>
+        <div><dt>Started</dt><dd>June 2026</dd></div>
+      </dl>
+    </section>
+
+    <section class="log-section" id="log">
+      <div class="section-heading">
+        <div>
+          <p class="section-number">02 / ACTIVITY LOG</p>
+          <h2>最近の活動</h2>
+        </div>
+        <div class="filters" aria-label="活動カテゴリで絞り込む">
+          <button class="filter is-active" type="button" data-filter="all">すべて</button>
+          <button class="filter" type="button" data-filter="build">制作</button>
+          <button class="filter" type="button" data-filter="learn">学習</button>
+          <button class="filter" type="button" data-filter="note">記録</button>
+        </div>
+      </div>
+
+      <div class="log-grid">
+        <article class="log-card featured" data-category="build">
+          <div class="card-art art-one"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="card-content">
+            <p class="card-meta"><span>制作</span><time datetime="2026-06-13">2026.06.13</time></p>
+            <h3>ChatGPTと初めての個人サイトをつくる</h3>
+            <p>企画からデザイン、コーディング、公開方法の調査まで。最初の一歩を記録しました。</p>
+            <a href="#entry-first-site" class="card-link">記録を読む <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="log-card" data-category="learn">
+          <div class="card-art art-two"><span class="code-line">&lt;main&gt;</span><span class="code-line"> display: grid;</span><span class="code-line">&lt;/main&gt;</span></div>
+          <div class="card-content">
+            <p class="card-meta"><span>学習</span><time datetime="2026-06-10">2026.06.10</time></p>
+            <h3>HTMLとCSSの役割を整理する</h3>
+            <p>ページの構造と見た目を分けて考える、Web制作の基本を学習。</p>
+          </div>
+        </article>
+
+        <article class="log-card" data-category="note">
+          <div class="card-art art-three"><span>IDEA</span><i></i><span>TRY</span><i></i><span>LOG</span></div>
+          <div class="card-content">
+            <p class="card-meta"><span>記録</span><time datetime="2026-06-01">2026.06.01</time></p>
+            <h3>活動記録を残す理由</h3>
+            <p>小さな進歩を見える形にして、次の行動を決めやすくする。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="entry" id="entry-first-site">
+      <div class="entry-label">FIRST ENTRY</div>
+      <div class="entry-body">
+        <p class="section-number">2026.06.13 / BUILD</p>
+        <h2>このサイトも、活動記録のひとつ。</h2>
+        <p>このページは、AIに相談しながらHTML、CSS、JavaScriptで作った最初の成果物です。外部のサイト作成サービスに閉じず、ファイルを自分で持つことで、デザインも機能も自由に変更できます。</p>
+        <p>次は独自ドメインを決め、GitHub Pagesなどへ公開します。その後は、活動記録を追加しやすい仕組みやお問い合わせフォームにも挑戦する予定です。</p>
+      </div>
+    </section>
+
+    <section class="next-section" id="next">
+      <p class="section-number">03 / WHAT'S NEXT</p>
+      <div class="next-grid">
+        <h2>次につくるもの</h2>
+        <ol>
+          <li><span>01</span><p>独自ドメインを取得して公開する</p><small>DOMAIN & DEPLOY</small></li>
+          <li><span>02</span><p>活動記録のページを増やす</p><small>CONTENT</small></li>
+          <li><span>03</span><p>お問い合わせ方法を追加する</p><small>CONTACT</small></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <span class="brand-mark">S</span>
+      <p>Learning in public,<br>one step at a time.</p>
+    </div>
+    <p>© 2026 SHO / ACTIVITY LOG</p>
+    <a href="#top">BACK TO TOP ↑</a>
+  </footer>
+</body>
+</html>
