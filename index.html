@@ -76,7 +76,24 @@
       </div>
 
       <div class="log-grid">
-        <article class="log-card featured" data-category="build">
+        <article class="log-card featured stamp-card" data-category="build">
+          <div class="card-art stamp-card-art">
+            <img src="assets/mamoritetsu/main.webp" alt="黄色いヘルメットをかぶった守り鉄君のLINEスタンプ">
+            <div>
+              <span>AI × LINE STICKERS</span>
+              <strong>守り鉄君</strong>
+              <small>FROM IDEA TO RELEASE</small>
+            </div>
+          </div>
+          <div class="card-content">
+            <p class="card-meta"><span>制作</span><time datetime="2026-06-14">2026.06.14</time></p>
+            <h3>生成AIとLINEスタンプをつくってみた</h3>
+            <p>Geminiとの壁打ちから、画像の調整、Creators Marketへの登録まで。鉄道を守る「守り鉄君」が形になる過程を記録しました。</p>
+            <a href="#entry-line-stickers" class="card-link">記録を読む <span>↗</span></a>
+          </div>
+        </article>
+
+        <article class="log-card" data-category="build">
           <div class="card-art art-one"><span>HTML</span><span>CSS</span><span>JS</span></div>
           <div class="card-content">
             <p class="card-meta"><span>制作</span><time datetime="2026-06-13">2026.06.13</time></p>
@@ -105,6 +122,96 @@
         </article>
       </div>
     </section>
+
+    <article class="project-entry" id="entry-line-stickers">
+      <header class="project-hero">
+        <div class="project-intro">
+          <p class="section-number">2026.06.14 / BUILD</p>
+          <p class="project-kicker">NEW CHALLENGE 02</p>
+          <h2>生成AIを相棒に、<br>LINEスタンプをつくる。</h2>
+          <p class="project-lead">鉄道の安全を守る作業員「守り鉄君」。キャラクターの企画から画像生成、LINE Creators Marketへの登録まで、Geminiと対話しながら2シリーズのスタンプを形にしました。</p>
+        </div>
+        <figure class="project-main-visual">
+          <img src="assets/mamoritetsu/sheet-01.webp" alt="守り鉄君LINEスタンプ第1シリーズの制作シート">
+          <figcaption>守り鉄君 / STICKER SERIES 01</figcaption>
+        </figure>
+      </header>
+
+      <div class="project-stats" aria-label="制作結果">
+        <div><strong>2</strong><span>STICKER SETS</span></div>
+        <div><strong>44</strong><span>EXPORTED STAMP PNGS</span></div>
+        <div><strong>AI</strong><span>GEMINI COLLABORATION</span></div>
+      </div>
+
+      <div class="article-layout">
+        <aside class="article-index" aria-label="記事の目次">
+          <span>PROCESS</span>
+          <ol>
+            <li><a href="#stamp-concept">コンセプトを決める</a></li>
+            <li><a href="#stamp-dialogue">AIと何度も詰める</a></li>
+            <li><a href="#stamp-finish">申請用画像に仕上げる</a></li>
+            <li><a href="#stamp-lessons">登録でつまずいたこと</a></li>
+            <li><a href="#stamp-conclusion">やってみた結論</a></li>
+          </ol>
+        </aside>
+
+        <div class="article-body">
+          <section id="stamp-concept">
+            <p class="article-step">01 / CONCEPT</p>
+            <h3>普段使いできて、鉄道現場らしいキャラクターへ。</h3>
+            <p>最初に決めたのは、日常の連絡で使える言葉と、鉄道の保全作業を組み合わせることでした。黄色いヘルメット、濃紺の作業服、反射ベストを身につけた作業員を「守り鉄君」と名づけ、線路、踏切、駅、制御盤などを背景にしたスタンプを目指しました。</p>
+            <p>企業ロゴをそのまま使わないよう、ヘルメットのマークはオリジナルのものへ変更。生成を始める前に外見、色、線の太さ、世界観を文章にしたキャラクター定義書も作りました。</p>
+          </section>
+
+          <section id="stamp-dialogue">
+            <p class="article-step">02 / DIALOGUE WITH AI</p>
+            <h3>一度で完成させず、違和感を言葉にして返す。</h3>
+            <p>Geminiには、複数案を1枚のシートとして生成してもらいました。ただ、最初から理想どおりだったわけではありません。信号の現示、分岐器の形、高所作業車、踏切の遮断かん、夜間作業の照明など、鉄道現場として気になる点を一つずつ具体的に伝えて修正しました。</p>
+            <blockquote>「もっと鉄道らしく」ではなく、「信号機を1本の柱に2灯設置する」「手持ちライトをヘルメット装着型にする」のように、直したい対象と状態を具体的に伝える。</blockquote>
+            <p>同じキャラクターを繰り返し生成すると顔や服装が少しずつ変わるため、完成度の高い画像を参照として添付し、固定の定義書を毎回渡す運用にしました。文言と背景の重複を避けるため、作成済み・未作成を管理するカタログも用意しています。</p>
+          </section>
+
+          <figure class="wide-figure">
+            <img src="assets/mamoritetsu/sheet-02.webp" alt="守り鉄君LINEスタンプ第1シリーズ後半の制作シート">
+            <figcaption>日常で使いやすい言葉と、鉄道設備の場面を組み合わせた第1シリーズ。</figcaption>
+          </figure>
+
+          <section id="stamp-finish">
+            <p class="article-step">03 / FINISHING</p>
+            <h3>生成画像を、そのまま申請できるわけではない。</h3>
+            <p>AIが生成したシートから各イラストを切り出し、背景を透過したPNGに加工しました。さらに、スタンプ画像とは別に、ストアで使う240×240pxのメイン画像と、トーク画面で使う96×74pxのタブ画像も準備します。</p>
+            <div class="spec-grid">
+              <div><span>STAMP</span><strong>80–370 × 80–320px</strong><p>透過PNG / 縦横とも偶数</p></div>
+              <div><span>MAIN</span><strong>240 × 240px</strong><p>ストアに表示する代表画像</p></div>
+              <div><span>TAB</span><strong>96 × 74px</strong><p>トークルームの選択画像</p></div>
+            </div>
+          </section>
+
+          <section id="stamp-lessons">
+            <p class="article-step">04 / SMALL ROADBLOCKS</p>
+            <h3>最後に効いたのは、画像と入力欄の細かな仕様。</h3>
+            <p>Creators Marketでは、最初から表示される英語欄を日本語へ置き換えるのではなく、「言語を追加」から日本語を増やす必要がありました。説明文も画面上の文字数判定に合わせて何度か短く調整しました。</p>
+            <p>最も悩んだのは画像アップロードです。規定の範囲内なのに通る画像と通らない画像がありましたが、原因は切り出した画像の幅または高さが奇数だったこと。<strong>縦横のピクセル数を両方とも偶数に修正すると、すべて登録できました。</strong>サイズの上限だけでなく、偶数という条件まで確認する必要があります。</p>
+            <div class="lesson-note">
+              <span>UPLOAD CHECK</span>
+              <p>PNG形式、透過背景、十分な余白、規定サイズ内、そして縦横とも偶数。この5点を最初からテンプレート化すると作業が速くなる。</p>
+            </div>
+          </section>
+
+          <figure class="wide-figure">
+            <img src="assets/mamoritetsu/sheet-03.webp" alt="守り鉄君LINEスタンプ第2シリーズの制作シート">
+            <figcaption>参照画像と定義書を使い、同じキャラクターで展開した第2シリーズ。</figcaption>
+          </figure>
+
+          <section id="stamp-conclusion" class="conclusion">
+            <p class="article-step">05 / CONCLUSION</p>
+            <h3>生成AIを使えば、思っていたよりずっと作れる。</h3>
+            <p>絵をゼロから描けなくても、コンセプトを決め、違和感を具体的な言葉で伝え、必要な加工を加えれば、スタンプとして使えるところまで持っていけました。仕上がりも想像以上で、鉄道現場らしさと親しみやすさを両立できたと思います。</p>
+            <p>一方で、AIが出した画像を受け取るだけでは完成しません。キャラクターを一貫させる定義、細かな修正指示、申請仕様への調整まで含めて「つくる」作業でした。だからこそ、完成したときの手応えも大きいチャレンジになりました。</p>
+          </section>
+        </div>
+      </div>
+    </article>
 
     <section class="entry" id="entry-first-site">
       <div class="entry-label">FIRST ENTRY</div>
