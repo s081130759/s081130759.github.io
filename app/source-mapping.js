@@ -286,6 +286,11 @@ window.SOURCE_MAPPING = {
         "title": "踏切道改良促進法施行規則",
         "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/踏切道改良促進法施行規則 _ e-Gov 法令検索.pdf",
         "articleCandidates": []
+      },
+      {
+        "title": "踏切対策資料",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/道路：踏切対策の推進 4.踏切道改良促進法 - 国土交通省.pdf",
+        "articleCandidates": []
       }
     ]
   },
@@ -979,6 +984,11 @@ window.SOURCE_MAPPING = {
             "excerpt": "第二十二条の三 鉄道事業者は、利用者の利便の増進を図るため、他の運送事業者その他の関係者と相 互に協力して、連絡運輸、直通運輸その他の他の運送事業者の運送との間の旅客の乗継ぎ又は貨物の 引継ぎを円滑に行うための国土交通省令で定める措置を講ずるよう努めなければならない。 ２ 鉄道事業者が他の鉄道事業者に対し旅客の乗継ぎに係る前項の措置であつて鉄道施設の建設又は改 良によるもの（以下「乗継円滑化措置」という。 ）に関する協議を求めたときは、当該他の鉄道事業 者は、当該乗継円滑化措"
           }
         ]
+      },
+      {
+        "title": "在来鉄道騒音対策指針",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/在来鉄道の新設又は大規模改良に際しての騒音対策の指針について _ 法令・告示・通達 _ 環境省.pdf",
+        "articleCandidates": []
       }
     ]
   },
@@ -1178,6 +1188,11 @@ window.SOURCE_MAPPING = {
       {
         "title": "技術基準省令 解釈基準",
         "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/鉄道に関する技術上の基準を定める省令等の解釈基準について.pdf",
+        "articleCandidates": []
+      },
+      {
+        "title": "鉄道車両ブレーキ基礎資料",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/鉄道に関する技術基準（車両編）における基礎知識(8)－ブレーキ装置.pdf",
         "articleCandidates": []
       }
     ]
@@ -1669,6 +1684,11 @@ window.SOURCE_MAPPING = {
         "title": "技術基準省令 解釈基準",
         "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/鉄道に関する技術上の基準を定める省令等の解釈基準について.pdf",
         "articleCandidates": []
+      },
+      {
+        "title": "国土交通白書",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/国土交通省白書.pdf",
+        "articleCandidates": []
       }
     ]
   },
@@ -1677,8 +1697,14 @@ window.SOURCE_MAPPING = {
     "exam": "common",
     "year": 2023,
     "questionNumber": 19,
-    "status": "source-needed",
-    "sources": []
+    "status": "candidate-linked",
+    "sources": [
+      {
+        "title": "JIS E 1101 普通レール",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/JISE1101_2012 普通レール及び分岐器類用特殊レール.pdf",
+        "articleCandidates": []
+      }
+    ]
   },
   "common-2023-20": {
     "id": "common-2023-20",
@@ -1790,6 +1816,11 @@ window.SOURCE_MAPPING = {
       {
         "title": "技術基準省令 解釈基準",
         "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/鉄道に関する技術上の基準を定める省令等の解釈基準について.pdf",
+        "articleCandidates": []
+      },
+      {
+        "title": "鉄道車両ブレーキ基礎資料",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/鉄道に関する技術基準（車両編）における基礎知識(8)－ブレーキ装置.pdf",
         "articleCandidates": []
       }
     ]
@@ -2219,6 +2250,11 @@ window.SOURCE_MAPPING = {
         "title": "在来線鉄道騒音測定マニュアル",
         "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/在来線鉄道騒音測定マニュアル.pdf",
         "articleCandidates": []
+      },
+      {
+        "title": "在来鉄道騒音対策指針",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/在来鉄道の新設又は大規模改良に際しての騒音対策の指針について _ 法令・告示・通達 _ 環境省.pdf",
+        "articleCandidates": []
       }
     ]
   },
@@ -2249,6 +2285,11 @@ window.SOURCE_MAPPING = {
             "excerpt": "第十三条 本線の曲線半径及びこう配は、設計最高速度、設計牽引重量等を考慮し、鉄道輸送の高速性 及び大量性を確保することができるものでなければならない。ただし、地形上等の理由によりやむを 得ない場合は、この限りでない。 （曲線半径） 第十四条 曲線半径は、車両の曲線通過性能、運転速度等を考慮し、車両の安全な走行に支障を及ぼす おそれのないものでなければならない。 ２ プラットホームに沿う本線の曲線半径は、できる限り大きなものとしなければならない。 （カント）"
           }
         ]
+      },
+      {
+        "title": "鉄道車両ブレーキ基礎資料",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/鉄道に関する技術基準（車両編）における基礎知識(8)－ブレーキ装置.pdf",
+        "articleCandidates": []
       }
     ]
   },
@@ -2257,16 +2298,33 @@ window.SOURCE_MAPPING = {
     "exam": "common",
     "year": 2024,
     "questionNumber": 17,
-    "status": "source-needed",
-    "sources": []
+    "status": "candidate-linked",
+    "sources": [
+      {
+        "title": "国土交通白書",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/国土交通省白書.pdf",
+        "articleCandidates": []
+      }
+    ]
   },
   "common-2024-18": {
     "id": "common-2024-18",
     "exam": "common",
     "year": 2024,
     "questionNumber": 18,
-    "status": "source-needed",
-    "sources": []
+    "status": "candidate-linked",
+    "sources": [
+      {
+        "title": "エネルギーに関する年次報告",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/エネルギーに関する年次報告.pdf",
+        "articleCandidates": []
+      },
+      {
+        "title": "エネルギー供給構造高度化法",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/エネルギー供給事業者によるエネルギー源の環境適合利用及び化石エネルギー原料の有効な利用の促進に関する法律 _ e-Gov 法令検索.pdf",
+        "articleCandidates": []
+      }
+    ]
   },
   "common-2024-19": {
     "id": "common-2024-19",
@@ -2505,6 +2563,11 @@ window.SOURCE_MAPPING = {
       {
         "title": "JIS E 4001 鉄道車両用語",
         "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/JISE4001_2011 鉄道車両－用語.pdf",
+        "articleCandidates": []
+      },
+      {
+        "title": "鉄道車両ブレーキ基礎資料",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/鉄道に関する技術基準（車両編）における基礎知識(8)－ブレーキ装置.pdf",
         "articleCandidates": []
       }
     ]
@@ -2912,6 +2975,11 @@ window.SOURCE_MAPPING = {
       {
         "title": "技術基準省令 解釈基準",
         "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/鉄道に関する技術上の基準を定める省令等の解釈基準について.pdf",
+        "articleCandidates": []
+      },
+      {
+        "title": "国土交通白書",
+        "file": "/Users/sho/Desktop/鉄道設計技士/法令資料/国土交通省白書.pdf",
         "articleCandidates": []
       }
     ]

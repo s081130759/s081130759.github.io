@@ -13,7 +13,46 @@ const examDefinitions = {
 const sourceMapping = window.SOURCE_MAPPING || {};
 
 function sourceStatus(exam, year, number) {
-  return sourceMapping[`${exam}-${year}-${number}`] || { status: "source-needed", sources: [] };
+  const mapped = sourceMapping[`${exam}-${year}-${number}`] || { status: "source-needed", sources: [] };
+  const questionStatus = examBanks[exam]?.[year]?.find(question => question.number === number)?.reviewStatus;
+  if (questionStatus === "text-verified" || questionStatus === "solution-verified") return { ...mapped, status: questionStatus };
+  return mapped;
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
+}
+
+function renderSourceContext(source, verificationStatus) {
+  const container = document.querySelector("#source-context");
+  const sources = source.sources || [];
+  if (!sources.length) {
+    container.hidden = true;
+    container.innerHTML = "";
+    return;
+  }
+  const verified = verificationStatus === "text-verified" || verificationStatus === "solution-verified";
+  container.hidden = false;
+  if (verified) {
+    container.innerHTML = `<details open><summary>確認した根拠資料</summary><div class="source-context-list">${sources.map(item => `<article><h3>${escapeHtml(item.title)}</h3><p>該当する条・項・号と本文は、答え合わせ後の各選択肢の解説に掲載しています。</p></article>`).join("")}</div><p class="source-context-note">自動抽出した条文候補ではなく、各解説に表示する「本文確認済み」「導出確認済み」の根拠を確定情報として扱ってください。</p></details>`;
+    return;
+  }
+  container.innerHTML = `<details><summary>参考条文・資料候補（未確定）</summary><div class="source-context-list">${sources.map(item => {
+    const candidates = (item.articleCandidates || []).slice(0, 2);
+    return `<article><h3>${escapeHtml(item.title)}</h3>${candidates.length ? candidates.map(candidate => `<div class="source-candidate"><strong>${escapeHtml(candidate.article)}</strong><p>${escapeHtml(candidate.excerpt)}</p></div>`).join("") : `<p>資料候補として紐付け済みです。条・節の特定は確認中です。</p>`}</article>`;
+  }).join("")}</div><p class="source-context-note">候補表示は本文照合前の検索支援です。各解説の「本文確認済み」「導出確認済み」を確定情報として扱ってください。</p></details>`;
+}
+
+function renderStudyGuides(question) {
+  const container = document.querySelector("#study-guide");
+  const guides = question.studyGuides || [];
+  if (!guides.length) {
+    container.hidden = true;
+    container.innerHTML = "";
+    return;
+  }
+  container.hidden = false;
+  container.innerHTML = `<details><summary>解法ガイド・使用公式</summary>${guides.map(guide => `<article><h3>${escapeHtml(guide.title)}</h3><ol>${guide.steps.map(step => `<li>${escapeHtml(step)}</li>`).join("")}</ol><div class="formula-list">${guide.formulas.map(formula => `<code>${escapeHtml(formula)}</code>`).join("")}</div></article>`).join("")}<p>このガイドは解法の入口です。個別問題で導出確認済みの場合は、答え合わせ後の詳細導出を優先してください。</p></details>`;
 }
 
 let selectedExam = localStorage.getItem("railway-exam-type") || "common";
@@ -105,12 +144,20 @@ function analysisData(exam) {
 
 function renderAnalysis() {
   const data = analysisData(analysisExam);
+  const analysisQuestions = Object.values(examBanks[analysisExam]).flat();
   const ranked = data.categories.map((category, index) => ({ category, count: data.totals[category], color: categoryColors[index] })).sort((a, b) => b.count - a.count);
   const top = ranked[0];
   document.querySelector("#analysis-years").textContent = `${data.years.length}年`;
   document.querySelector("#analysis-total").textContent = `${data.total}問`;
   document.querySelector("#analysis-top-category").textContent = top.category;
   document.querySelector("#analysis-top-rate").textContent = `${top.count}問・${Math.round(top.count / data.total * 100)}%`;
+  const quality = [
+    ["本文確認済み", analysisQuestions.filter(question => question.verificationStatus === "text-verified").length, "法令・規格本文と照合"],
+    ["導出確認済み", analysisQuestions.filter(question => question.verificationStatus === "solution-verified").length, "計算式と公式正答を照合"],
+    ["図版表示", analysisQuestions.filter(question => question.diagram).length, "模式図又は原本ページ"],
+    ["解法ガイド", analysisQuestions.filter(question => question.studyGuides?.length).length, "公式・解法手順を表示"]
+  ];
+  document.querySelector("#quality-metrics").innerHTML = quality.map(([label, count, note]) => `<article><span>${label}</span><strong>${count}<small> / ${data.total}問</small></strong><div><i style="width:${count / data.total * 100}%"></i></div><p>${note}</p></article>`).join("");
 
   let cursor = 0;
   const gradients = ranked.map(item => {
@@ -260,13 +307,20 @@ function renderQuestion() {
   document.querySelector("#question-diagram").hidden = !question.diagram;
   const notice = document.querySelector("#review-notice");
   const source = sourceStatus(selectedExam, selectedYear, question.number);
+  const verificationStatus = question.verificationStatus || question.reviewStatus;
   notice.hidden = false;
   const articleCandidates = source.sources.flatMap(item => (item.articleCandidates || []).slice(0, 1).map(candidate => `${item.title} ${candidate.article}`));
-  notice.textContent = source.status === "article-identified"
+  notice.textContent = verificationStatus === "solution-verified" || source.status === "solution-verified"
+    ? "公式図・公式正答と計算過程を照合済みです。解説に式の組立て、代入、単位を掲載しています。"
+    : (verificationStatus === "text-verified" || source.status === "text-verified")
+    ? "公式問題文・正答と根拠本文を照合済みです。各選択肢の解説に条・項・号と該当内容を掲載しています。"
+    : source.status === "article-identified"
     ? `公式問題文・正答を照合済み。条文候補：${articleCandidates.join("、")}。本文との最終照合は確認中です。`
     : (source.status === "candidate-linked"
       ? `公式問題文・正答を照合済み。根拠候補：${source.sources.map(item => item.title).join("、")}。条文・規格本文との詳細照合は確認中です。`
       : "公式問題文・正答を照合済み。根拠資料は未特定のため、詳細解説は確認中です。");
+  renderSourceContext(source, verificationStatus);
+  renderStudyGuides(question);
 
   form.innerHTML = question.statements.map((statement, index) => {
     const kind = inputKind(question, statement);
@@ -327,8 +381,10 @@ function renderCatalog() {
   document.querySelector("#catalog-list").innerHTML = entries.length ? entries.map(entry => {
     const flagged = isReviewFlagged(catalogExam, entry.year, entry.question.number);
     const source = sourceStatus(catalogExam, entry.year, entry.question.number);
-    const statusLabel = source.status === "article-identified" ? "条文候補特定" : (source.status === "candidate-linked" ? "根拠候補あり" : "資料未特定");
-    return `<article class="catalog-item"><div class="catalog-item-meta"><span>${entry.year}</span><span>問${entry.question.number}</span><span>${entry.category}</span><em class="source-status ${source.status}">${statusLabel}</em>${flagged ? `<b>復習</b>` : ""}</div><h3>${entry.question.prompt}</h3><button type="button" data-open-exam="${catalogExam}" data-open-year="${entry.year}" data-open-number="${entry.question.number}">この問題を解く</button></article>`;
+    const questionVerification = entry.question.verificationStatus || entry.question.reviewStatus;
+    const status = ["solution-verified", "text-verified"].includes(questionVerification) ? questionVerification : source.status;
+    const statusLabel = status === "solution-verified" ? "導出確認済み" : (status === "text-verified" ? "本文確認済み" : (status === "article-identified" ? "条文候補特定" : (status === "candidate-linked" ? "根拠候補あり" : "資料未特定")));
+    return `<article class="catalog-item"><div class="catalog-item-meta"><span>${entry.year}</span><span>問${entry.question.number}</span><span>${entry.category}</span><em class="source-status ${status}">${statusLabel}</em>${flagged ? `<b>復習</b>` : ""}</div><h3>${entry.question.prompt}</h3><button type="button" data-open-exam="${catalogExam}" data-open-year="${entry.year}" data-open-number="${entry.question.number}">この問題を解く</button></article>`;
   }).join("") : `<p class="catalog-empty">条件に一致する問題はありません。</p>`;
   document.querySelectorAll("[data-open-number]").forEach(button => button.addEventListener("click", () => openCatalogQuestion(button)));
 }
@@ -388,8 +444,11 @@ function explanationHtml(question, statement, index, selected) {
   const errorPoint = statement.errorPoint ? `<div class="detail-block error-point"><strong>${statement.answer === false ? "誤っている箇所" : "判定のポイント"}</strong><p>${statement.errorPoint}</p></div>` : "";
   const terms = statement.terms?.length ? `<div class="detail-block term-block"><strong>用語・選択肢の確認</strong><dl>${statement.terms.map(term => `<div><dt>${term.term}</dt><dd>${term.meaning}</dd></div>`).join("")}</dl></div>` : "";
   const selectedText = selected === null || selected === undefined ? "未回答" : (kind === "boolean" ? (selected ? "○" : "×") : selected);
+  const statementVerification = statement.verificationStatus === "text-verified"
+    ? `<span class="verification-badge text-verified">本文確認済み</span>`
+    : (statement.verificationStatus === "solution-verified" ? `<span class="verification-badge solution-verified">導出確認済み</span>` : "");
   return `<article class="explanation ${isCorrect ? "correct" : "wrong"}">
-    <h3>${statement.label || `${index + 1}.`} ${isCorrect ? "正解" : "不正解"}（回答：${selectedText}／正答：${correctAnswer}${correctOption ? ` ${correctOption.text}` : ""}）</h3>
+    <h3>${statement.label || `${index + 1}.`} ${isCorrect ? "正解" : "不正解"}（回答：${selectedText}／正答：${correctAnswer}${correctOption ? ` ${correctOption.text}` : ""}）${statementVerification}</h3>
     <p>${statement.explanation}</p>${errorPoint}${derivation}${terms}
     <div class="legal-basis"><strong>根拠：${statement.citation}</strong><p><span class="statute-label">根拠本文・定義</span>${statement.statuteText}</p></div>
   </article>`;

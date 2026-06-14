@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#123c69">
   <title>鉄道設計技士 学習</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260615j">
 </head>
 <body>
   <header class="site-header">
@@ -63,6 +63,8 @@
       <h2 id="question-title"></h2>
       <p id="instruction" class="instruction">各記述について、○または×を選んでください。</p>
       <p id="review-notice" class="review-notice" hidden>公式問題文と正答は照合済みです。この年度の詳細解説は、根拠資料との照合を進めながら順次更新しています。</p>
+      <div id="source-context" class="source-context" hidden></div>
+      <div id="study-guide" class="study-guide" hidden></div>
       <div id="question-diagram" class="question-diagram" hidden></div>
       <form id="question-form"></form>
       <div id="exam-palette" class="exam-palette" hidden aria-label="問題番号パレット"></div>
@@ -130,6 +132,8 @@
         <article><span>最多分野</span><strong id="analysis-top-category">-</strong><small id="analysis-top-rate">-</small></article>
       </div>
 
+      <div id="quality-metrics" class="quality-metrics" aria-label="解説整備状況"></div>
+
       <div class="analysis-grid">
         <article class="chart-card donut-card">
           <div class="chart-heading"><div><p class="chart-kicker">5 YEAR TOTAL</p><h3>5年間の構成比</h3></div></div>
@@ -162,7 +166,11 @@
   <script src="questions-2025-common-21-30.js"></script>
   <script src="questions-common-2021-2024.js"></script>
   <script src="questions-2025-specialist1.js"></script>
-  <script src="source-mapping.js"></script>
-  <script src="app.js"></script>
+  <script src="data-fixes.js?v=20260615j"></script>
+  <script src="specialist1-diagram-pages.js?v=20260615j"></script>
+  <script src="source-mapping.js?v=20260615j"></script>
+  <script src="verified-explanations.js?v=20260615j"></script>
+  <script src="study-guides.js?v=20260615j"></script>
+  <script src="app.js?v=20260615j"></script>
 </body>
 </html>
