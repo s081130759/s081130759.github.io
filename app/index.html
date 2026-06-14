@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c69">
+  <title>鉄道設計技士 学習</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">個人学習用</p>
+      <h1>鉄道設計技士 過去問</h1>
+      <p id="current-course">共通試験 2025年度</p>
+    </div>
+    <div class="score" aria-live="polite">
+      <span id="progress">1 / 30</span>
+      <strong id="score">正解 0</strong>
+    </div>
+  </header>
+
+  <main>
+    <nav class="view-nav" aria-label="画面切替">
+      <button class="view-button active" type="button" data-view="study">問題演習</button>
+      <button class="view-button" type="button" data-view="catalog">問題一覧</button>
+      <button class="view-button" type="button" data-view="analysis">出題分析</button>
+    </nav>
+
+    <nav id="exam-nav" class="exam-nav study-view" aria-label="試験区分">
+      <button class="exam-tab active" type="button" data-exam="common">共通試験</button>
+      <button class="exam-tab" type="button" data-exam="specialist1">専門試験I <small>2021–2025</small></button>
+      <button class="exam-tab" type="button" disabled>専門試験II <small>準備中</small></button>
+    </nav>
+
+    <section class="mode-panel study-view" aria-labelledby="mode-title">
+      <div>
+        <p class="eyebrow">学習方法</p>
+        <h2 id="mode-title">モードを選択</h2>
+      </div>
+      <div class="mode-buttons">
+        <button class="mode-button active" type="button" data-mode="practice"><strong>練習モード</strong><span>1問ごとに解説</span></button>
+        <button class="mode-button" type="button" data-mode="exam"><strong>試験モード</strong><span>全問終了後に採点</span></button>
+      </div>
+      <p id="mode-description" class="mode-description"></p>
+    </section>
+
+    <section class="year-panel study-view" aria-labelledby="year-title">
+      <div>
+        <p class="eyebrow">年度を選択</p>
+        <h2 id="year-title">共通試験 過去問</h2>
+      </div>
+      <div id="year-buttons" class="year-buttons"></div>
+    </section>
+
+    <section id="question-section" class="question-card study-view" aria-labelledby="question-title">
+      <div class="question-meta">
+        <span id="question-number">問1</span>
+        <span id="question-topic">鉄道事業法</span>
+        <span id="question-category">分野</span>
+        <button id="review-toggle" class="review-toggle" type="button" aria-pressed="false">あとで復習</button>
+      </div>
+      <h2 id="question-title"></h2>
+      <p id="instruction" class="instruction">各記述について、○または×を選んでください。</p>
+      <p id="review-notice" class="review-notice" hidden>公式問題文と正答は照合済みです。この年度の詳細解説は、根拠資料との照合を進めながら順次更新しています。</p>
+      <div id="question-diagram" class="question-diagram" hidden></div>
+      <form id="question-form"></form>
+      <div id="exam-palette" class="exam-palette" hidden aria-label="問題番号パレット"></div>
+      <button id="check-button" class="primary" type="button">答え合わせ</button>
+      <div id="exam-actions" class="exam-actions" hidden>
+        <button id="previous-button" class="secondary" type="button">前の問題</button>
+        <button id="exam-next-button" class="primary" type="button">次の問題</button>
+        <button id="finish-exam-button" class="finish-button" type="button" hidden>試験を終了して採点</button>
+      </div>
+      <p id="form-message" class="form-message" role="alert"></p>
+    </section>
+
+    <section id="result-panel" class="result-panel study-view" hidden>
+      <div class="result-heading">
+        <h2 id="result-title">解説</h2>
+        <span id="result-score"></span>
+      </div>
+      <div id="explanations"></div>
+      <div class="source-box">
+        <strong>根拠資料</strong>
+        <p id="source-text"></p>
+      </div>
+      <button id="next-button" class="primary" type="button">次の問題</button>
+    </section>
+
+    <section id="exam-summary" class="result-panel exam-summary study-view" hidden>
+      <p class="eyebrow">試験結果</p>
+      <h2 id="exam-summary-score"></h2>
+      <p id="target-result" class="target-result"></p>
+      <p class="target-note">60%はアプリ上の学習目標です。公式の合格基準を示すものではありません。</p>
+      <div id="exam-review-list"></div>
+      <button id="restart-exam-button" class="primary" type="button">もう一度受験する</button>
+    </section>
+
+    <section id="catalog-view" class="catalog-view" hidden aria-labelledby="catalog-title">
+      <div class="catalog-header">
+        <div><p class="eyebrow">QUESTION LIBRARY</p><h2 id="catalog-title">問題一覧</h2><p>年度、分野、復習状態から問題を探し、直接演習を開始できます。</p></div>
+        <strong id="catalog-count">0問</strong>
+      </div>
+      <div class="catalog-filters">
+        <label>科目<select id="catalog-exam"><option value="common">共通試験</option><option value="specialist1">専門試験I</option></select></label>
+        <label>年度<select id="catalog-year"></select></label>
+        <label>分野<select id="catalog-category"><option value="all">すべて</option></select></label>
+        <label class="review-filter"><input id="catalog-review-only" type="checkbox"><span>復習対象のみ</span></label>
+      </div>
+      <div id="catalog-list" class="catalog-list"></div>
+    </section>
+
+    <section id="analysis-view" class="analysis-view" hidden aria-labelledby="analysis-title">
+      <div class="analysis-hero">
+        <div>
+          <p class="eyebrow">PAST EXAM INSIGHTS</p>
+          <h2 id="analysis-title">出題分布を読む</h2>
+          <p>2021～2025年度の問題を主題別に分類し、重点分野と年度ごとの変化を可視化します。</p>
+        </div>
+        <div class="analysis-subjects" role="group" aria-label="分析科目">
+          <button class="analysis-subject active" type="button" data-analysis-exam="common">共通試験</button>
+          <button class="analysis-subject" type="button" data-analysis-exam="specialist1">専門試験I</button>
+        </div>
+      </div>
+
+      <div class="analysis-metrics">
+        <article><span>分析年度</span><strong id="analysis-years">5年</strong><small>2021–2025</small></article>
+        <article><span>分析問題数</span><strong id="analysis-total">150問</strong><small>各年30問</small></article>
+        <article><span>最多分野</span><strong id="analysis-top-category">-</strong><small id="analysis-top-rate">-</small></article>
+      </div>
+
+      <div class="analysis-grid">
+        <article class="chart-card donut-card">
+          <div class="chart-heading"><div><p class="chart-kicker">5 YEAR TOTAL</p><h3>5年間の構成比</h3></div></div>
+          <div class="donut-layout">
+            <div id="distribution-donut" class="distribution-donut"><div><strong>150</strong><span>QUESTIONS</span></div></div>
+            <div id="distribution-legend" class="distribution-legend"></div>
+          </div>
+        </article>
+
+        <article class="chart-card ranking-card">
+          <div class="chart-heading"><div><p class="chart-kicker">PRIORITY</p><h3>頻出分野ランキング</h3></div></div>
+          <div id="category-ranking" class="category-ranking"></div>
+        </article>
+      </div>
+
+      <article class="chart-card yearly-card">
+        <div class="chart-heading"><div><p class="chart-kicker">YEAR BY YEAR</p><h3>年度別 出題構成</h3></div><p>各年度30問に占める割合</p></div>
+        <div id="yearly-distribution" class="yearly-distribution"></div>
+      </article>
+
+      <p class="analysis-note">分類は問題文の主題をもとにした学習用の独自分類です。複数分野にまたがる問題は、中心となる知識分野へ1問として集計しています。</p>
+    </section>
+  </main>
+
+  <footer>
+    <span id="footer-source">出典：公益財団法人鉄道総合技術研究所「2025年度 鉄道設計技士試験 共通試験」</span>
+  </footer>
+  <script src="questions-2025-common.js"></script>
+  <script src="questions-2025-common-11-20.js"></script>
+  <script src="questions-2025-common-21-30.js"></script>
+  <script src="questions-common-2021-2024.js"></script>
+  <script src="questions-2025-specialist1.js"></script>
+  <script src="source-mapping.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
