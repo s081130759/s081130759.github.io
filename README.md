@@ -17,6 +17,8 @@ python3 -m http.server 8000
 - 色、余白、レイアウト: `styles.css` 冒頭のCSS変数
 - 活動記録: `index.html` の `<article class="log-card">` を複製
 - 絞り込みやテーマ切替: `script.js`
+- ブラウザゲーム: `games/invader/`
+- ゲームの制作記録: `games/invader/DEVLOG.md`
 
 ## GitHub Pagesで公開する
 

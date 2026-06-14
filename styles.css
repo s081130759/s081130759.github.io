@@ -101,6 +101,22 @@ h1 em { color: var(--accent); font-family: "Noto Sans JP", sans-serif; font-styl
 .stamp-card-art div { display: flex; flex-direction: column; }
 .stamp-card-art span, .stamp-card-art small { font-size: .65rem; font-weight: 700; letter-spacing: .18em; }
 .stamp-card-art strong { margin: 10px 0; font-family: "Noto Sans JP", sans-serif; font-size: clamp(2.1rem, 5vw, 5.6rem); line-height: 1; letter-spacing: -.08em; }
+.game-card-art { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; padding: 45px; background: #08101d; color: #ecf7f1; }
+.game-card-art::before { content: ""; position: absolute; inset: 0; opacity: .16; background-image: radial-gradient(#68e6da 1px, transparent 1px); background-size: 22px 22px; }
+.game-card-art p { position: relative; display: flex; flex-direction: column; align-items: center; margin: 0; line-height: 1; }
+.game-card-art span, .game-card-art small { color: #68e6da; font-size: .62rem; font-weight: 700; letter-spacing: .2em; }
+.game-card-art strong { margin: 8px 0 13px; color: #ff6948; font-size: clamp(2rem, 5vw, 5rem); letter-spacing: -.08em; }
+.pixel-invader { position: relative; width: 140px; height: 94px; color: #68e6da; filter: drop-shadow(0 0 12px rgba(104,230,218,.38)); }
+.pixel-invader i { position: absolute; display: block; background: currentColor; }
+.pixel-invader i:nth-child(1) { left: 35px; top: 0; width: 70px; height: 12px; }
+.pixel-invader i:nth-child(2) { left: 20px; top: 12px; width: 100px; height: 24px; }
+.pixel-invader i:nth-child(3) { left: 5px; top: 36px; width: 130px; height: 30px; }
+.pixel-invader i:nth-child(4) { left: 20px; top: 66px; width: 22px; height: 18px; }
+.pixel-invader i:nth-child(5) { right: 20px; top: 66px; width: 22px; height: 18px; }
+.pixel-invader i:nth-child(6) { left: 35px; top: 42px; width: 14px; height: 14px; background: #08101d; }
+.pixel-invader i:nth-child(7) { right: 35px; top: 42px; width: 14px; height: 14px; background: #08101d; }
+.play-link { display: inline-flex; align-items: center; justify-content: space-between; align-self: start; min-width: 175px; margin-top: 14px; padding: 12px 15px; background: var(--accent); color: #fff; font-size: .8rem; font-weight: 700; }
+.play-link:hover { background: var(--ink); }
 .card-content { display: flex; flex-direction: column; padding: clamp(28px, 4vw, 55px); }
 .card-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: .68rem; letter-spacing: .1em; }
 .card-meta span { color: var(--accent); font-weight: 700; }
